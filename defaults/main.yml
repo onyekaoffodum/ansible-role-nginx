@@ -1,0 +1,7 @@
+---
+# defaults file for nginx
+
+web_root: /usr/share/nginx/html
+owner: nginx
+group: nginx
+

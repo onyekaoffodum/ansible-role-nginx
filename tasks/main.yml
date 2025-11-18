@@ -1,0 +1,27 @@
+---
+# tasks file for nginx
+
+# Install & configure Nginx and deploy HTML
+
+- name: Install nginx
+  package:
+    name: nginx
+    state: present
+  tags: install
+
+- name: Deploy index.html template
+  template:
+    src: index.html.j2
+    dest: "{{ web_root }}/index.html"
+    owner: "{{ owner }}"
+    group: "{{ group }}"
+    mode: '0644'
+  tags: copy
+  notify:
+    - Restart Nginx
+    - Wait for port 80 to be available
+
+- name: Print message
+  debug:
+    msg: "Owner: {{ owner }}"
+

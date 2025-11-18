@@ -1,0 +1,13 @@
+---
+# handlers file for nginx
+
+- name: Restart Nginx
+  service:
+    name: nginx
+    state: restarted
+
+- name: Wait for port 80 to be available
+  wait_for:
+    port: 80
+    delay: 3
+    timeout: 30
