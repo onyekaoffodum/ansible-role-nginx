@@ -1,38 +1,74 @@
-Role Name
-=========
+# Ansible Role: nginx_web
 
-A brief description of the role goes here.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-Requirements
-------------
+This Ansible role installs **Nginx** on a target system and deploys a **custom HTML page** (`index.html`) for the "Sandra Tech" website. It is designed to be reusable and production-ready, following best practices with separate directories for tasks, handlers, vars, defaults, and templates.
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+---
 
-Role Variables
---------------
+## Table of Contents
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+- [Requirements](#requirements)
+- [Role Variables](#role-variables)
+- [Dependencies](#dependencies)
+- [Example Playbook](#example-playbook)
+- [Directory Structure](#directory-structure)
+- [License](#license)
 
-Dependencies
-------------
+---
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+## Requirements
 
-Example Playbook
-----------------
+- Ansible 2.9+
+- Target system: Linux (tested on Ubuntu, CentOS, Amazon Linux)
+- Nginx package available in the system repositories
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+---
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+## Role Variables
 
-License
--------
+| Variable      | Default                  | Description                              |
+|---------------|--------------------------|------------------------------------------|
+| `web_root`    | `/usr/share/nginx/html`  | Destination directory for `index.html`  |
+| `owner`       | `nginx`                  | Owner of deployed files                  |
+| `group`       | `nginx`                  | Group of deployed files                  |
 
-BSD
+You can override these variables in your playbook or inventory.
 
-Author Information
-------------------
+---
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+## Dependencies
+
+None. This role is standalone.
+
+---
+
+## Example Playbook
+
+```yaml
+- hosts: webservers
+  become: yes
+  roles:
+    - nginx_web
+
+---
+
+## Directory Structure
+
+nginx_web/
+├── tasks/
+│   └── main.yml            # Install nginx and copy HTML
+├── handlers/
+│   └── main.yml            # Restart Nginx, wait for port 80
+├── templates/
+│   └── index.html.j2       # HTML template for Sandra Tech website
+├── vars/
+│   └── main.yml            # Role-specific variables
+├── defaults/
+│   └── main.yml            # Default variables (overridable)
+├── meta/
+│   └── main.yml            # Role metadata
+└── README.md               # This file
+
+
+
