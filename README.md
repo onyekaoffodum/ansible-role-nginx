@@ -1,6 +1,5 @@
 # Ansible Role: nginx_web
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 This Ansible role installs **Nginx** on a target system and deploys a **custom HTML page** (`index.html`) for the "Sandra Tech" website. It is designed to be reusable and production-ready, following best practices with separate directories for tasks, handlers, vars, defaults, and templates.
 
