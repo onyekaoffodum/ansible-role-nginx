@@ -48,6 +48,7 @@ None. This role is standalone.
   become: yes
   roles:
     - nginx_web
+```
 
 ---
 
