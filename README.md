@@ -12,7 +12,6 @@ This Ansible role installs **Nginx** on a target system and deploys a **custom H
 - [Dependencies](#dependencies)
 - [Example Playbook](#example-playbook)
 - [Directory Structure](#directory-structure)
-- [License](#license)
 
 ---
 
@@ -69,5 +68,5 @@ nginx_web/
 │   └── main.yml            # Role metadata
 └── README.md               # This file
 
-
+---
 
