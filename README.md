@@ -68,6 +68,6 @@ nginx_web/
 ├── meta/
 │   └── main.yml            # Role metadata
 └── README.md               # This file
-
+```
 ---
 
