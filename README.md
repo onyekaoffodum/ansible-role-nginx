@@ -53,6 +53,7 @@ None. This role is standalone.
 
 ## Directory Structure
 
+```text
 nginx_web/
 ├── tasks/
 │   └── main.yml            # Install nginx and copy HTML
